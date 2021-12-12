@@ -85,16 +85,4 @@ func main() {
 
 }
 
-func sumOfSlice(slice []int) int {
-	count := 0
-	for _, value := range slice {
-		count += value
-	}
-	return count
-}
-
-func stringArrayToIntArray(arr []string) ([]int, error) {
-	ret := make([]int, len(arr))
-	return ret, nil
-}
 

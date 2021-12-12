@@ -1,7 +1,6 @@
 package main
 
 import (
-	"errors"
 	"log"
 	"os"
 	"strconv"
@@ -24,7 +23,6 @@ func main() {
 	structuredInput, err := getStructFromInput("day2/input.txt")
 	if err != nil {
 		log.Fatal(err)
-		return
 	}
 
 	// Part 1: multiply depth by horizontal distance
@@ -36,7 +34,7 @@ func main() {
 
 	log.Printf("Part 1 - depth * horizontal distance: %d\n", result)
 
-	// Part 2: Different insttructions, run new depth * horizontal distance
+	// Part 2: Different instructions, run new depth * horizontal distance
 	position := Position{0, 0, 0}
 	for index, element := range structuredInput {
 		switch element.word {
@@ -49,7 +47,6 @@ func main() {
 			position.depth += position.aim * element.value
 		default:
 			log.Fatalf("Unexpected instruction at line %d.\nExpected: up, down or forward\nFound: %s", index, element.word)
-			return
 		}
 	}
 
@@ -79,7 +76,6 @@ func getStructFromInput(path string) ([]Elements, error) {
 		parts:=strings.Split(line, " ")
 		if len(parts) != 2 {
 			log.Fatalf("Unexpected content in input file.\nExpected: \"string int\"\nFound: %s", line)
-			return nil, errors.New("Unexected content in input file")
 		}
 		// Get the integer value from the line
 		value, err := strconv.Atoi(parts[1])
@@ -93,16 +89,4 @@ func getStructFromInput(path string) ([]Elements, error) {
 	return structuredInput, nil
 }
 
-func sumOfSlice(slice []int) int {
-	count := 0
-	for _, value := range slice {
-		count += value
-	}
-	return count
-}
-
-func stringArrayToIntArray(arr []string) ([]int, error) {
-	ret := make([]int, len(arr))
-	return ret, nil
-}
 
