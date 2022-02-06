@@ -32,7 +32,7 @@ func main() {
 			epsilonRate += 1<<(len(sumsOfOnes)-index-1)
 		}
 	}
-	log.Printf("Part 1 - power consumptoin: %d\n", gammaRate*epsilonRate)
+	log.Printf("Part 1 - power consumption: %d\n", gammaRate*epsilonRate)
 
 	// Part 2: multiply th oxygen generator rating by the CO2 scrubber rating = life support rating
 
@@ -59,7 +59,6 @@ func main() {
 			co2Rate += 1 << (len(co2RateStruct.value) - index - 1)
 		}
 	}
-	
 	log.Printf("Part 2 - life support rating: %d\n", oxygenRate * co2Rate)
 }
 
